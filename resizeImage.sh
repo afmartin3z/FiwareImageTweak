@@ -16,8 +16,13 @@ echo $size
 qemu-img resize ${image_file} ${size}G
 
 qemu-nbd -c /dev/nbd0 ${image_file}
-parted /dev/nbd0 p f
+# parted /dev/nbd0 p free
+printf "fix\n" | parted ---pretend-input-tty /dev/nbd0 print
+
 parted /dev/nbd0 resizepart 1 ${size}GB
+
+sleep 3
+
 e2fsck -f /dev/nbd0p1
 resize2fs  /dev/nbd0p1
 

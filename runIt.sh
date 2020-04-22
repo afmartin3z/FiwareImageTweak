@@ -26,9 +26,6 @@ cat << EOT > /tmp/${vmname}
     <apic/>
     <vmport state='off'/>
   </features>
-  <cpu mode='custom' match='exact' check='partial'>
-    <model fallback='allow'>Broadwell-IBRS</model>
-  </cpu>
   <clock offset='utc'>
     <timer name='rtc' tickpolicy='catchup'/>
     <timer name='pit' tickpolicy='delay'/>

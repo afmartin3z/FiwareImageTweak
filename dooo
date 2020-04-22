@@ -1,10 +1,10 @@
-sudo ./resizeImage.sh  /var/lib/libvirt/images/u2.qcow2 3
-sudo ./setBootstrapService.sh  /var/lib/libvirt/images/u2.qcow2
-sudo ./setInstall.sh  /var/lib/libvirt/images/u2.qcow2 bootstrap.sh
-sudo ./setPassword.sh  /var/lib/libvirt/images/u2.qcow2
-sudo ./runIt.sh  /var/lib/libvirt/images/u2.qcow2
-# sudo ./unsetPassword.sh  /var/lib/libvirt/images/u2.qcow2
-sudo ./unsetBootstrapService.sh /var/lib/libvirt/images/u2.qcow2
-sudo virt-sysprep -a /var/lib/libvirt/images/u2.qcow2
+image_file=/var/lib/libvirt/images/base_ubuntu_18_04.qcow2
+sudo ./resizeImage.sh ${image_file} 6
+sudo ./setBootstrapService.sh  ${image_file}
+sudo ./setInstall.sh  ${image_file} bootstrap.sh
+sudo ./setPassword.sh  ${image_file}
+sudo ./runIt.sh  ${image_file}
+sudo ./unsetPassword.sh  ${image_file}
+sudo ./unsetBootstrapService.sh ${image_file}
 
-openstack image create --disk-format qcow2 --container-format bare --public --file u2.qcow2  ubuntu18.04.docker
+# openstack image create --disk-format qcow2 --container-format bare --public --file u2.qcow2  ubuntu18.04.docker
