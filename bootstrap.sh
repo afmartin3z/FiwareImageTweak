@@ -1,15 +1,15 @@
 #!/bin/bash
 
-## 
+##
 ## Install Docker
 ##
 dhclient ens3
-apt-get -y update 
+DEBIAN_FRONTEND='noninteractive' apt-get -y update
 
 DEBIAN_FRONTEND='noninteractive' apt-get dist-upgrade  -o Dpkg::Options::="--force-confdef" -o Dpkg::Options="--force-confold" -y
 
 
-apt-get install -y \
+DEBIAN_FRONTEND='noninteractive' apt-get install -y
    apt-transport-https \
    ca-certificates \
    software-properties-common \
@@ -19,9 +19,9 @@ apt-get install -y \
    docker \
    docker.io
 
-apt -y clean
-apt -y autoremove
-## 
+DEBIAN_FRONTEND='noninteractive' apt -y clean
+DEBIAN_FRONTEND='noninteractive' apt -y autoremove
+##
 ## Install Docker-compose
 ##
 curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
