@@ -17,11 +17,13 @@ There is a file with the name of __dooo__ shows the steps (after we have an imag
 
    ```aedbfe19-19c0-4e63-a6f9-422014843515 --file /var/lib/libvirt/images/base_ubuntu_18_04.qcow2```
 
+   This image already has the security enhancements from FIWARE Lab Images. For example it has no root access using SSH, no passwords, only users ubuntu and support can access to it, etc.
+
+   List of available images:
    ```$ glance image-list```
 
+   Download the image:
    ```$ glance image-download  --file ./base_ubuntu_18_04.qcow2 aedbfe19-19c0-4e63-a6f9-42201484351```
-
-   This image already has the security enhancements from FIWARE Lab Images. For example it has no root access using SSH, no passwords, only users ubuntu and support can access to it, etc.
 
 2. We should resize image with __resizeImage.sh__ script. As show, the image is pretty small, it only has 2Gb or
 
