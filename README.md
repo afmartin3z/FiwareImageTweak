@@ -49,11 +49,11 @@ There is a file with the name of __dooo__ shows the steps (after we have an imag
 
 3. We set the bootstrap service in the VM, so it can run the _install.sh_ script when it boots the 1st time. We inject the install.sh script and we also can add a password in order to debug it if needed (__setPassword.sh__ script). The scripts to configure this are: __setBootstrapService.sh__ which adds a service to the startup so it executes a script when it exits and __setInstall.sh__ whis injects the _install.sh_ script.
    ```
-   $ sudo ./setInstall.sh /var/lib/libvirt/images/base_ubuntu_18.04.qcow2  ./bootstrap.sh
+   $ sudo ./setInstall.sh /var/lib/libvirt/images/base_ubuntu_18_04.qcow2  ./bootstrap.sh
    ...
-   $ sudo ./setBootstrapService.sh /var/lib/libvirt/images/base_ubuntu_18.04.qcow2
+   $ sudo ./setBootstrapService.sh /var/lib/libvirt/images/base_ubuntu_18_04.qcow2
    ....
-   $ sudo ./setPassword.sh /var/lib/libvirt/images/base_ubuntu_18.04.qcow2
+   $ sudo ./setPassword.sh /var/lib/libvirt/images/base_ubuntu_18_04.qcow2
    ....
    ```
 	Some considerations about the installation script later.
@@ -73,7 +73,7 @@ There is a file with the name of __dooo__ shows the steps (after we have an imag
 
    ``` 
     $ openstack image create --disk-format qcow2 --container-format bare --public \
-    --file /var/lib/libvirt/images/base_ubuntu_18.04.qcow2 ubuntu18.04.docker.fiware
+    --file /var/lib/libvirt/images/base_ubuntu_18_04.qcow2 ubuntu18.04.docker.fiware
    ```
 
 ## Script install.sh
