@@ -1,7 +1,7 @@
 image_file=/var/lib/libvirt/images/base_ubuntu_18_04.qcow2
 sudo ./resizeImage.sh ${image_file} 6
 sudo ./setBootstrapService.sh  ${image_file}
-sudo ./setInstall.sh  ${image_file} bootstrap.sh
+sudo ./setInstall.sh  ${image_file} bootstrap.sh runApp.sh
 sudo ./setPassword.sh  ${image_file}
 sudo ./runIt.sh  ${image_file}
 sudo ./unsetPassword.sh  ${image_file}

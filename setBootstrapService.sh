@@ -18,6 +18,34 @@ mount -o bind /sys ${dir}/sys
 
 # cp -p bootstrap.sh ${dir}/tmp
 
+cat << EOT > ${dir}/etc/systemd/system/runApp.service
+[Unit]
+Description=run app
+ConditionPathExists=/etc/runApp
+# Before=gdm.service
+Before=systemd-logind.service
+
+[Service]
+ExecStart=/etc/runApp start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+# Type=oneshot
+Type=normal
+
+[Install]
+WantedBy=multi-user.target
+EOT
+
+cat << EOT > ${dir}/etc/runApp
+#!/bin/bash
+
+if [ ! -f /install.sh ]; then
+/installApp.sh
+fi
+EOT
+
 cat << EOT > ${dir}/etc/systemd/system/bootstrap.service
 [Unit]
 Description=bootstrap thing to create the VM
@@ -41,14 +69,17 @@ EOT
 cat << EOT > ${dir}/etc/bootstrap
 #!/bin/bash
 
-if [ -f /install.sh ]; then 
+if [ -f /install.sh ]; then
 /install.sh
 rm /install.sh && poweroff
 fi
 EOT
+
+chmod +x ${dir}/etc/runApp
 chmod +x ${dir}/etc/bootstrap
 
 chroot ${dir}  << EOT
+systemctl enable runApp
 systemctl enable bootstrap
 EOT
 
