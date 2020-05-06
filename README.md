@@ -51,9 +51,9 @@ There is a file with the name of __dooo__ shows the steps (after we have an imag
    ```
    $ sudo ./setInstall.sh /var/lib/libvirt/images/base_ubuntu_18.04.qcow2  ./bootstrap.sh ./runApp.sh
    ...
-   $ sudo ./setBootstrapService.sh /var/lib/libvirt/images/base_ubuntu_18.04.qcow2
+   $ sudo ./setBootstrapService.sh /var/lib/libvirt/images/base_ubuntu_18_04.qcow2
    ....
-   $ sudo ./setPassword.sh /var/lib/libvirt/images/base_ubuntu_18.04.qcow2
+   $ sudo ./setPassword.sh /var/lib/libvirt/images/base_ubuntu_18_04.qcow2
    ....
    ```
 	Some considerations about the installation script later.
@@ -73,7 +73,7 @@ There is a file with the name of __dooo__ shows the steps (after we have an imag
 
    ``` 
     $ openstack image create --disk-format qcow2 --container-format bare --public \
-    --file /var/lib/libvirt/images/base_ubuntu_18.04.qcow2 ubuntu18.04.docker.fiware
+    --file /var/lib/libvirt/images/base_ubuntu_18_04.qcow2 ubuntu18.04.docker.fiware
    ```
 
 ## Script install.sh
